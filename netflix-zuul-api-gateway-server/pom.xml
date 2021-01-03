@@ -10,15 +10,19 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zeno</groupId>
-	<artifactId>netflix-eureka-naming-server</artifactId>
+	<artifactId>netflix-zuul-api-gateway-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>netflix-eureka-naming-server</name>
+	<name>netflix-zuul-api-gateway-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
+		<lombok.version>1.18.16</lombok.version>
 		<spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+		<!--		<spring-boot.version>2.2.6</spring-boot.version>-->
+		<!--		<spring-cloud.version>2020.0.0</spring-cloud.version>-->
+		<!--		<spring.bootstrap.version>3.0.0-RC1</spring.bootstrap.version>-->
 	</properties>
 
 	<dependencies>
@@ -28,11 +32,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<!-- https://stackoverflow.com/questions/56839197/springboot-error-for-eureka-with-browsers-showing-xml-instead-of-json -->
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.dataformat</groupId>
+					<artifactId>jackson-dataformat-xml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
 
 		<dependency>
@@ -40,6 +51,11 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

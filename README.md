@@ -38,13 +38,13 @@ e.g. http://localhost:8100/currency-converter/from/USD/to/INR/quantity/5000
 localhost:8100/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}
 e.g. http://localhost:8100/currency-converter-feign/from/USD/to/INR/quantity/8000
 {
-"id": 10001,
-"from": "USD",
-"to": "INR",
-"conversionMultiple": 70,
-"quantity": 8000,
-"totalCalculatedAmount": 560000,
-"port": 8000
+	"id": 10001,
+	"from": "USD",
+	"to": "INR",
+	"conversionMultiple": 70,
+	"quantity": 8000,
+	"totalCalculatedAmount": 560000,
+	"port": 8000
 }
 </code></pre>
 
@@ -97,6 +97,37 @@ application.properties - currency-exchange-service.ribbon.listOfServers
 
 3. Configure Ribbon load balancer to connect to naming server
 
+## Zuul API Gateway
+
+http://localhost:8765/{application-name}/uri/
+
+a. Currency Exchange Service
+e.g. http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/INR
+<pre><code>
+{
+	"id": 10001,
+	"from": "USD",
+	"to": "INR",
+	"conversionMultiple": 70,
+	"port": 8001
+}
+</code></pre>
+
+b. Currency Calculation Server
+e.g. http://localhost:8765/currency-calculation-service/currency-converter-feign/from/USD/to/INR/quantity/1099
+e.g. http://localhost:8765/currency-calculation-service/currency-exchange-service/from/USD/to/INR/quantity/1000  (Wrong)
+<pre><code>
+{
+	"id": 10001,
+	"from": "USD",
+	"to": "INR",
+	"conversionMultiple": 70,
+	"port": 8001
+}
+</code></pre>
+
+
+3. Configure Ribbon load balancer to connect to naming server
 
 
 ## Other References
