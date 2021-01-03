@@ -9,17 +9,23 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.zeno</groupId>
-	<artifactId>limits-service</artifactId>
+	<artifactId>currency-calculation-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>limits-service</name>
-	<description>limits-service</description>
+	<name>currency-calculation-service</name>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<spring-boot.version>2.4.1</spring-boot.version>
 		<spring-cloud.version>2020.0.0</spring-cloud.version>
+		<spring.bootstrap.version>3.0.0-RC1</spring.bootstrap.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -32,7 +38,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
-			<version>3.0.0-RC1</version>
+			<version>${spring.bootstrap.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
 		<dependency>
