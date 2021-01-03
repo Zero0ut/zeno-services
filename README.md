@@ -1,3 +1,6 @@
+
+
+
 ## Currency Exchange Service 
 
 <pre><code>
@@ -18,7 +21,7 @@ e.g. http://localhost:8000/currency-exchange/from/USD/to/INR
 localhost:8000/currency-converter/from/{from}/to/{to}/quantity/{quantity}
 
 <pre><code>
-http://localhost:8100/currency-converter/from/USD/to/INR/quantity/5000
+e.g. http://localhost:8100/currency-converter/from/USD/to/INR/quantity/5000
 {
 "id": 10001,
 "from": "USD",
@@ -32,3 +35,22 @@ http://localhost:8100/currency-converter/from/USD/to/INR/quantity/5000
 
 
 ## Feign
+
+<pre><code>
+e.g. http://localhost:8100/currency-converter-feign/from/{from}/to/{to}/quantity/{quantity}
+{
+"id": 10001,
+"from": "USD",
+"to": "INR",
+"conversionMultiple": 70,
+"quantity": 8000,
+"totalCalculatedAmount": 560000,
+"port": 8000
+}
+</code></pre>
+
+
+
+## Other References
+
+https://github.com/piomin/sample-spring-cloud-microservices-future
